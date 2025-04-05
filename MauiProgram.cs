@@ -15,8 +15,11 @@ namespace GroupNineMobileProject
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<LocalDbService>();
+            builder.Services.AddSingleton<SignUpPage>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

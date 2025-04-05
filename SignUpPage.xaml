@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GroupNineMobileProject.SignUpPage">
+
+    <!-- Data entry -->
+    <FlexLayout Direction="Column" BackgroundColor="Black">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="400">
+            <Entry x:Name="usernameEntryField" Placeholder="Username"/>
+            <Entry x:Name="emailEntryField" Placeholder="Email"/>
+            <Entry x:Name="passwordEntryField" Placeholder="Password" />
+            <Entry x:Name="passwordConfirmEntryField" Placeholder="Confirm Password" />
+            <Button x:Name="loginButton" Text="Already have an account? Login here!" Clicked="loginButton_Clicked" />
+            <Button x:Name="signUpButton" Text="Create account" Clicked="signUpButton_Clicked" />
+        </VerticalStackLayout>
+
+        <!-- Database listing for testing purposes -->
+        <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout Padding="5">
+                            <Label Text="{Binding Email, StringFormat='Email: {0}'}" FontSize="17" FontAttributes="Bold" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Username, StringFormat='Username: {0}'}" />
+                                <Label Grid.Column="2" Text="{Binding Password, StringFormat='Password: {0}'}" FontAttributes="Bold" />
+                            </Grid>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </FlexLayout>
+</ContentPage>

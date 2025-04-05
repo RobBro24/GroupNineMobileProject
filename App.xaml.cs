@@ -2,14 +2,15 @@
 {
     public partial class App : Application
     {
+        private static LocalDbService _dbService = new LocalDbService();
+
         public App()
         {
             InitializeComponent();
+
+            MainPage = new AppShell();
         }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
-        }
+        public static LocalDbService DbService => _dbService;
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GroupNineMobileProject.ProfilePage"
+             Title="ProfilePage">
+
+    <VerticalStackLayout>
+        <Label 
+            x:Name="UsernameLabel"
+            Text="Username:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button 
+            Text="Sign Out"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Clicked="SignOutButton" />
+
+        <Button 
+            Text="Delete Account"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Clicked="DeleteButton" />
+
+    </VerticalStackLayout>
+</ContentPage>

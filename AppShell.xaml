@@ -7,9 +7,34 @@
     Shell.FlyoutBehavior="Flyout"
     Title="GroupNineMobileProject">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="Home" Icon="homeicon.png">
+            <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:HomePage}"
+            Route="HomePage" />
+        </Tab>
+
+        <Tab Title="Games" Icon="gamesicon.png">
+            <ShellContent
+            Title="Games" 
+            ContentTemplate="{DataTemplate local:GamesPage}"
+            Route="GamesPage" />
+        </Tab>
+
+        <Tab Title="Profile" Icon="profileicon.png">
+            <ShellContent
+            Title="Profile" 
+            ContentTemplate="{DataTemplate local:LoginPage}"
+            Route="ProfilePage" />
+        </Tab>
+
+        <Tab Title="Settings" Icon="settingsicon.png">
+            <ShellContent
+            Title="Settings" 
+            ContentTemplate="{DataTemplate local:SettingsPage}"
+            Route="SettingsPage" />
+        </Tab>
+    </TabBar>
 
 </Shell>
