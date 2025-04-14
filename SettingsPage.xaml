@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GroupNineMobileProject.GamesPage"
-             Title="GamesPage">
-    <ScrollView>
-        <VerticalStackLayout>
-            <Label Text="Settings" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" />
-            
-            <Label Text="App Theme" FontSize="Body"/>
-            <Picker Title="Select Theme" ItemsSource="" SelectedItem=""/>
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:GroupNineMobileProject"
+            x:Class="GroupNineMobileProject.SettingsPage"
+            Title="GamesPage">
+   <ContentPage.BindingContext>
+       <local:SettingsViewModel />
+   </ContentPage.BindingContext>
+   <ScrollView>
+       <VerticalStackLayout>
+           <Label Text="Settings" FontSize="Header" VerticalOptions="Center" HorizontalOptions="Center" />
 
-            <Label Text="Notifications" FontSize="Body"/>
-            <Switch IsToggled="{Binding}"/>
-            <Label Text="Enable Notifications"/>
+            <Label Text="App Theme" FontSize="Subtitle"/>
+           <Picker Title="Select Theme" ItemsSource="{Binding AppThemes}" SelectedItem=""/>
 
-            <Label Text="Sort Games By" FontSize="Body"/>
-            <Picker Title="Sort By" ItemsSource="" SelectedItem=""/>
+           <Label Text="Notifications" FontSize="Subtitle"/>
+           <Label Text="Enable Notifications" FontSize="12"/>
+           <Switch IsToggled="{Binding}"/>
 
 
-        </VerticalStackLayout>
-    </ScrollView>
+            <Label Text="Sort Games By" FontSize="Subtitle"/>
+           <Picker Title="Sort By"  SelectedItem=""/>
+
+
+       </VerticalStackLayout>
+   </ScrollView>
 
 </ContentPage>
