@@ -3,27 +3,32 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:GroupNineMobileProject"
             x:Class="GroupNineMobileProject.SettingsPage"
-            Title="GamesPage">
-   <ContentPage.BindingContext>
-       <local:SettingsViewModel />
-   </ContentPage.BindingContext>
-   <ScrollView>
+            Title="Settings Page">
+    <ScrollView>
        <VerticalStackLayout>
            <Label Text="Settings" FontSize="Header" VerticalOptions="Center" HorizontalOptions="Center" />
 
             <Label Text="App Theme" FontSize="Subtitle"/>
-           <Picker Title="Select Theme" ItemsSource="{Binding AppThemes}" SelectedItem=""/>
+            <Picker x:Name="ThemePicker" Title="Select Theme" >
+                <Picker.Items>
+                    <x:String>Light</x:String>
+                    <x:String>Dark</x:String>
+                    <x:String>Orange</x:String>
+                </Picker.Items>
+            </Picker>
 
-           <Label Text="Notifications" FontSize="Subtitle"/>
+            <Label Text="Notifications" FontSize="Subtitle"/>
            <Label Text="Enable Notifications" FontSize="12"/>
-           <Switch IsToggled="{Binding}"/>
+           <Switch x:Name="NotifSwitch"/>
 
 
             <Label Text="Sort Games By" FontSize="Subtitle"/>
            <Picker Title="Sort By"  SelectedItem=""/>
 
+            <Button Text="Save Settings" Clicked="SaveButton_Clicked"/>
 
-       </VerticalStackLayout>
+
+        </VerticalStackLayout>
    </ScrollView>
 
 </ContentPage>
