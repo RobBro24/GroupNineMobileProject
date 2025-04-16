@@ -1,26 +1,36 @@
-using System;
 using Microsoft.Maui.Controls;
 
 namespace GroupNineMobileProject
 {
     public partial class GamesPage : ContentPage
     {
-        private readonly GamesViewModel _viewModel;
-
         public GamesPage()
         {
-            InitializeComponent();
-            _viewModel = new GamesViewModel();
-            BindingContext = _viewModel;
+            System.Diagnostics.Debug.WriteLine("Working GamesPage}"); // Log API error
 
-            // Load all games as soon as the page loads
-            LoadAllGames();
+            InitializeComponent();
+
+            // Set the BindingContext to an instance of the ViewModel
+            BindingContext = new GamesViewModel();
         }
 
-        // Method to load all games
-        private async void LoadAllGames()
+        protected override async void OnAppearing()
         {
-            await _viewModel.LoadGamesAsync("Halo"); // You can use any default search query here.
+            System.Diagnostics.Debug.WriteLine("OnAppearing");
+            System.Diagnostics.Debug.WriteLine("OnAppearing");
+            base.OnAppearing();
+
+            // Load games if no games are loaded already
+            var viewModel = (GamesViewModel)BindingContext;
+
+            if (viewModel != null && viewModel.Games.Count == 0)
+            {
+                System.Diagnostics.Debug.WriteLine("Trigger API");
+                await viewModel.LoadAllGamesAsync(); // Trigger the API call
+                System.Diagnostics.Debug.WriteLine("Done!");
+            }
         }
     }
 }
+
+

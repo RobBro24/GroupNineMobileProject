@@ -15,23 +15,25 @@ namespace GroupNineMobileProject
             _igdbService = new IgdbService();
         }
 
-        public async Task LoadGamesAsync(string searchQuery)
+        public async Task LoadAllGamesAsync() // This method can be renamed if needed, but it should call GetGamesAsync()
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine("Trying LoadAllgamesAsync"); // Log API error
+
                 Games.Clear();
-                var games = await _igdbService.GetGamesAsync(searchQuery);
+                var games = await _igdbService.GetGamesAsync(""); // Use GetGamesAsync here instead
 
                 foreach (var game in games)
                 {
-                    Games.Add(game);
+                    Games.Add(game); // Add the fetched games to the ObservableCollection
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error loading games: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error loading games: {ex.Message}");
             }
         }
-
     }
+
 }
