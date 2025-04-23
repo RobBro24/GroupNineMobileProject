@@ -54,11 +54,23 @@ namespace GroupNineMobileProject
             await _connection.InsertAsync(game);
         }
 
+        public async Task DeleteGame(LoggedGames game)
+        {
+            await _connection.DeleteAsync(game);
+        }
+
+        public async Task UpdateGame(LoggedGames game)
+        {
+            await _connection.UpdateAsync(game);
+        }
+
         public async Task<List<LoggedGames>> GetLoggedGames(int profileId)
         {
             return await _connection.Table<LoggedGames>()
                 .Where(g => g.ProfileId == profileId)
                 .ToListAsync();
         }
+
+
     }
 }

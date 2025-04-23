@@ -27,12 +27,34 @@ public partial class ProfilePage : ContentPage
         LoggedGamesListView.ItemsSource = loggedGames;
     }
 
-    public async void SignOutButton(object sender, EventArgs e)
+    private async void OnRatingChanged(object sender, EventArgs e)
+    {
+        var ratingControl = sender as AlohaKit.Controls.Rating;
+
+        if (ratingControl?.BindingContext is LoggedGames game)
+        {
+            game.Rating = ratingControl.Value;
+
+            await _dbService.UpdateGame(game);
+        }
+    }
+
+    private async void RemoveButton_Clicked(object sender, EventArgs e)
+    {
+        if (sender is Button button && button.BindingContext is LoggedGames game)
+        {
+            await _dbService.DeleteGame(game);
+            var loggedGames = await _dbService.GetLoggedGames(_loggedInProfile.Id);
+            LoggedGamesListView.ItemsSource = loggedGames;
+        }
+    }
+
+    public async void SignOutButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
     }
 
-    public async void DeleteButton(object sender, EventArgs e)
+    public async void DeleteButton_Clicked(object sender, EventArgs e)
     {
         await _dbService.Delete(_loggedInProfile);
         await Navigation.PopAsync();

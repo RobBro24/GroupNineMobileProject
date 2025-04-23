@@ -16,7 +16,8 @@ namespace GroupNineMobileProject
         public int ProfileId { get; set; }
         public string Name { get; set; }
         public string Summary { get; set; }
-        public double? Rating { get; set; }
+        public double? Rating { get; set; } = 0.0;
         public string Publisher { get; set; }
+        public DateTime DateLogged { get; set; } = DateTime.Now;
     }
 }

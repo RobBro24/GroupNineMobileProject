@@ -22,7 +22,7 @@ namespace GroupNineMobileProject
 
         [JsonIgnore]
         public string? PublisherName => InvolvedCompanies?
-            .FirstOrDefault(c => c.Publisher && c.Company != null)?.Company?.Name;
+            .FirstOrDefault(c => c.Publisher && c.Company != null)?.Company?.Name;  
     }
 
     public class InvolvedCompany

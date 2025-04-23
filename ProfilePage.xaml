@@ -16,13 +16,13 @@
             Text="Sign Out"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            Clicked="SignOutButton" />
+            Clicked="SignOutButton_Clicked" />
 
         <Button 
             Text="Delete Account"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            Clicked="DeleteButton" />
+            Clicked="DeleteButton_Clicked" />
 
         <Label Text="Logged Games:"
                FontAttributes="Bold"
@@ -36,8 +36,11 @@
                         <VerticalStackLayout>
                             <Label Text="{Binding Name}" FontAttributes="Bold" />
                             <Label Text="{Binding Summary}" LineBreakMode="TailTruncation" />
-                            <Label Text="{Binding Publisher}" FontAttributes="Italic" />
-                            <controls:Rating Value="{Binding Rating}" IsReadOnly="True" />
+                            <Label Text="{Binding Publisher, StringFormat='Published by {0}'}" FontAttributes="Italic" />
+                            <Label Text="{Binding DateLogged, StringFormat='Logged on: {0}'}" FontAttributes="Italic" />
+                            <controls:Rating Value="{Binding Rating, Mode=TwoWay}"
+                                             ValueChanged="OnRatingChanged"/>
+                            <Button x:Name="removeButton" Text="Remove Game" Clicked="RemoveButton_Clicked" />
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>

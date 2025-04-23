@@ -15,6 +15,8 @@ namespace GroupNineMobileProject
             _igdbService = new IgdbService();
         }
 
+
+
         public async Task LoadAllGamesAsync() // This method can be renamed if needed, but it should call GetGamesAsync()
         {
             try
@@ -33,6 +35,27 @@ namespace GroupNineMobileProject
             {
                 System.Diagnostics.Debug.WriteLine($"Error loading games: {ex.Message}");
             }
+        }
+
+        //Grabs random game for home page
+        public async Task<Game?> GetRandomGameAsync()
+        {
+            try
+            {
+                var games = await _igdbService.GetGamesAsync("any");
+
+                if (games?.Count > 0)
+                {
+                    var random = new Random();
+                    return games[random.Next(games.Count)];
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error getting random game: {ex.Message}");
+            }
+
+            return null;
         }
     }
 
