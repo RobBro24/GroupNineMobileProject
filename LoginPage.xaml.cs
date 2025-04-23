@@ -38,9 +38,12 @@ public partial class LoginPage : ContentPage
             return;
         }
 
-        //Move to profile page
+        //Move to profile page and create database
         else
         {
+            SessionService.CurrentProfile = existingProfile;
+            SessionService.DbService = _dbService;
+
             await Navigation.PushAsync(new ProfilePage(existingProfile, _dbService));
         }
     }

@@ -18,8 +18,10 @@ namespace GroupNineMobileProject
         {
             _connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, DB_NAME));
             _connection.CreateTableAsync<Profile>();
+            _connection.CreateTableAsync<LoggedGames>();
         }
 
+        //Logging profile methods
         public async Task<List<Profile>> GetProfiles()
         {
             return await _connection.Table<Profile>().ToListAsync();
@@ -45,5 +47,30 @@ namespace GroupNineMobileProject
         {
             await _connection.DeleteAsync(profile);
         }
+
+        //Logging game methods
+        public async Task LogGame(LoggedGames game)
+        {
+            await _connection.InsertAsync(game);
+        }
+
+        public async Task DeleteGame(LoggedGames game)
+        {
+            await _connection.DeleteAsync(game);
+        }
+
+        public async Task UpdateGame(LoggedGames game)
+        {
+            await _connection.UpdateAsync(game);
+        }
+
+        public async Task<List<LoggedGames>> GetLoggedGames(int profileId)
+        {
+            return await _connection.Table<LoggedGames>()
+                .Where(g => g.ProfileId == profileId)
+                .ToListAsync();
+        }
+
+
     }
 }
