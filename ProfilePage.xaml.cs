@@ -17,6 +17,15 @@ public partial class ProfilePage : ContentPage
         UsernameLabel.Text = $"Username: {profile.Username}";
     }
 
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        UsernameLabel.Text = $"Username: {_loggedInProfile.Username}";
+
+        var loggedGames = await _dbService.GetLoggedGames(_loggedInProfile.Id);
+        LoggedGamesListView.ItemsSource = loggedGames;
+    }
 
     public async void SignOutButton(object sender, EventArgs e)
     {

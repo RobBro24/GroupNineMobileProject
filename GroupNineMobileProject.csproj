@@ -61,6 +61,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AlohaKit" Version="1.0.100" />
+		<PackageReference Include="AlohaKit.Layouts" Version="1.0.0" />
+		<PackageReference Include="AlohaKit.UI" Version="1.0.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
