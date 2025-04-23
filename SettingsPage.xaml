@@ -22,8 +22,6 @@
            <Switch x:Name="NotifSwitch"/>
 
 
-            <Label Text="Sort Games By" FontSize="Subtitle"/>
-           <Picker Title="Sort By"  SelectedItem=""/>
 
             <Button Text="Save Settings" Clicked="SaveButton_Clicked"/>
 
