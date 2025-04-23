@@ -59,10 +59,11 @@ namespace GroupNineMobileProject
             if (viewModel != null && viewModel.Games.Count == 0)
             {
                 System.Diagnostics.Debug.WriteLine("Trigger API");
-                await viewModel.LoadAllGamesAsync(); // Trigger the API call
+                await viewModel.LoadAllGamesAsync(); 
                 System.Diagnostics.Debug.WriteLine("Done!");
             }
         }
+
     }
 }
 

@@ -5,39 +5,40 @@
              x:Class="GroupNineMobileProject.GamesPage"
              Title="Games">
 
-    <VerticalStackLayout Padding="20">
+    <ScrollView Padding="20">
+        <VerticalStackLayout>
 
-        <!-- Removed Search Section -->
+            <SearchBar Placeholder="Search games..."
+                       Text="{Binding SearchText, Mode=TwoWay}" />
 
-        <CollectionView ItemsSource="{Binding Games}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame BorderColor="Gray" CornerRadius="10" Padding="10" Margin="0,5">
-                        <VerticalStackLayout>
-                            <Label Text="{Binding Name}" 
-                                   FontAttributes="Bold" 
-                                   FontSize="18"/>
-                            <Label Text="{Binding Summary}" 
-                                   FontSize="14"
-                                   LineBreakMode="TailTruncation"
-                                   MaxLines="4"/>
+            <CollectionView ItemsSource="{Binding FilteredGames}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gray" CornerRadius="10" Padding="10" Margin="0,5">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}" 
+                                       FontAttributes="Bold" 
+                                       FontSize="18"/>
+                                <Label Text="{Binding Summary}" 
+                                       FontSize="14"
+                                       LineBreakMode="TailTruncation"
+                                       MaxLines="4"/>
 
+                                <Label Text="Rating:"
+                                       FontAttributes="Bold"/>
+                                <controls:Rating
+                                        Value="{Binding Rating, Mode=TwoWay}" />
 
-                            <Label Text="Rating:"
-                                   FontAttributes="Bold"/>
-                            <controls:Rating
-                                    Grid.Row="3"
-                                    Value="{Binding Rating, Mode=TwoWay}" />
+                                <Label Text="Publisher(s):"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding PublisherName}" />
+                                <Button x:Name="logButton" Text="Log this game" Clicked="logButton_Clicked" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-                            <Label Text="Publisher(s):"
-                                   FontAttributes="Bold"/>
-                            <Label Text="{Binding InvolvedCompanies[0].Company.Name}" />
-                            <Button x:Name="logButton" Text="Log this game" Clicked="logButton_Clicked" />
-                        </VerticalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
