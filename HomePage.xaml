@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:AlohaKit.Controls;assembly=AlohaKit"
              x:Class="GroupNineMobileProject.HomePage"
-             Title="HomePage">
+             Title="HomePage"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">

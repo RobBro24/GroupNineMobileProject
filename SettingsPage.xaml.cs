@@ -28,17 +28,51 @@ public partial class SettingsPage : ContentPage
             DisplayAlert("Success", "Settings have been saved!", "OK");
         }
 
-        private void ApplyThemeGlobally(string theme)
-        {
-            // Change the global background color based on the selected theme
-            if (theme == "Dark")
-                Application.Current.Resources["AppBackgroundColor"] = Colors.Black;
-            else if (theme == "Light")
-                Application.Current.Resources["AppBackgroundColor"] = Colors.AntiqueWhite;
-            else
-                Application.Current.Resources["AppBackgroundColor"] = Colors.Orange;
+    private void ApplyThemeGlobally(string theme)
+    {
+        // Update the global resource for background color
+        if (theme == "Dark")
+            Application.Current.Resources["AppBackgroundColor"] = Colors.Black;
+        else if (theme == "Light")
+            Application.Current.Resources["AppBackgroundColor"] = Colors.LightSlateGray;
+        else
+            Application.Current.Resources["AppBackgroundColor"] = Colors.DodgerBlue;
 
-            // Apply the new background color to all pages dynamically
-            App.Current.MainPage.BackgroundColor = (Color)Application.Current.Resources["AppBackgroundColor"];
+        // Ensure all windows/pages reflect the updated theme
+        foreach (var window in Application.Current?.Windows ?? Enumerable.Empty<Window>())
+        {
+            if (window.Page != null)
+            {
+                window.Page.BackgroundColor = (Color)Application.Current.Resources["AppBackgroundColor"];
+            }
         }
     }
+    private void NotifSwitch_Toggled(object sender, ToggledEventArgs e)
+    {
+        // Save the notification preference
+        Preferences.Set("NotificationsEnabled", e.Value);
+
+        // Enable or disable notifications
+        if (e.Value)
+        {
+            EnableNotifications();
+        }
+        else
+        {
+            DisableNotifications();
+        }
+    }
+
+    private void EnableNotifications()
+    {
+        // Logic to enable notifications
+        System.Diagnostics.Debug.WriteLine("Notifications enabled.");
+    }
+
+    private void DisableNotifications()
+    {
+        // Logic to disable notifications
+        System.Diagnostics.Debug.WriteLine("Notifications disabled.");
+    }
+
+}

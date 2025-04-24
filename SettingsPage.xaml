@@ -3,7 +3,8 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:GroupNineMobileProject"
             x:Class="GroupNineMobileProject.SettingsPage"
-            Title="Settings Page">
+            Title="Settings Page"
+            BackgroundColor="{DynamicResource AppBackgroundColor}">
     <ScrollView>
        <VerticalStackLayout>
            <Label Text="Settings" FontSize="Header" VerticalOptions="Center" HorizontalOptions="Center" />
@@ -13,20 +14,15 @@
                 <Picker.Items>
                     <x:String>Light</x:String>
                     <x:String>Dark</x:String>
-                    <x:String>Orange</x:String>
+                    <x:String>Blue</x:String>
                 </Picker.Items>
             </Picker>
 
             <Label Text="Notifications" FontSize="Subtitle"/>
            <Label Text="Enable Notifications" FontSize="12"/>
-           <Switch x:Name="NotifSwitch"/>
-
-
+           <Switch x:Name="NotifSwitch" Toggled="NotifSwitch_Toggled"/>
 
             <Button Text="Save Settings" Clicked="SaveButton_Clicked"/>
-
-
         </VerticalStackLayout>
    </ScrollView>
-
 </ContentPage>

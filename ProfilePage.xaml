@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GroupNineMobileProject.ProfilePage"
              xmlns:controls="clr-namespace:AlohaKit.Controls;assembly=AlohaKit"
-             Title="ProfilePage">
+             Title="ProfilePage"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
 
     <VerticalStackLayout>
         <Label 

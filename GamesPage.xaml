@@ -3,7 +3,8 @@
              xmlns:local="clr-namespace:GroupNineMobileProject"
              xmlns:controls="clr-namespace:AlohaKit.Controls;assembly=AlohaKit"
              x:Class="GroupNineMobileProject.GamesPage"
-             Title="Games">
+             Title="Games"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
 
     <ScrollView Padding="20">
         <VerticalStackLayout>

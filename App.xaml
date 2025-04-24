@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:GroupNineMobileProject"
              x:Class="GroupNineMobileProject.App">
     <Application.Resources>
-        <Color x:Key="AppBackgroundColor">#FFFFFF</Color>
+        <Color x:Key="AppBackgroundColor"></Color>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
