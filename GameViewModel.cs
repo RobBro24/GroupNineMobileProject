@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace GroupNineMobileProject
 {
@@ -24,6 +25,20 @@ namespace GroupNineMobileProject
                     _searchText = value;
                     OnPropertyChanged(nameof(SearchText));
                     FilterGames();
+                }
+            }
+        }
+
+        private double _rating;
+        public double Rating
+        {
+            get => _rating;
+            set
+            {
+                if (_rating != value)
+                {
+                    _rating = value;
+                    OnPropertyChanged();
                 }
             }
         }
@@ -84,18 +99,23 @@ namespace GroupNineMobileProject
         {
             FilteredGames.Clear();
 
+            // pick the subset you want
             var filtered = string.IsNullOrWhiteSpace(SearchText)
                 ? Games
-                : new ObservableCollection<Game>(Games.Where(g => g.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase)));
+                : new ObservableCollection<Game>(
+                    Games.Where(g =>
+                      g.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase)));
 
             foreach (var game in filtered)
             {
+                // reset before adding so the UI shows zero stars
+                game.Rating = 0;
                 FilteredGames.Add(game);
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        protected void OnPropertyChanged([CallerMemberName] string propName = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
     }
 }

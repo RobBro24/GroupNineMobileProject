@@ -5,7 +5,7 @@
              BackgroundColor="{DynamicResource AppBackgroundColor}">
 
     <!-- Data entry -->
-    <FlexLayout Direction="Column" BackgroundColor="Black">
+    <FlexLayout Direction="Column">
         <VerticalStackLayout Padding="10" FlexLayout.Basis="400">
             <Entry x:Name="usernameEntryField" Placeholder="Username" />
             <Entry x:Name="passwordEntryField" Placeholder="Password" />
