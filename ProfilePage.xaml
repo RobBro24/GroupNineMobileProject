@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GroupNineMobileProject.ProfilePage"
@@ -6,31 +5,37 @@
              Title="ProfilePage"
              BackgroundColor="{DynamicResource AppBackgroundColor}">
 
-    <VerticalStackLayout>
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,*">
         <Label 
             x:Name="UsernameLabel"
             Text="Username:"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            Grid.Row="0" />
 
         <Button 
             Text="Sign Out"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            Clicked="SignOutButton_Clicked" />
+            Clicked="SignOutButton_Clicked"
+            Grid.Row="1" />
 
         <Button 
             Text="Delete Account"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            Clicked="DeleteButton_Clicked" />
+            Clicked="DeleteButton_Clicked"
+            Grid.Row="2" />
 
         <Label Text="Logged Games:"
                FontAttributes="Bold"
                FontSize="18"
-               Margin="0,0,0,10" />
+               Margin="0,0,0,10"
+               Grid.Row="3" />
 
-        <CollectionView x:Name="LoggedGamesListView">
+        <CollectionView x:Name="LoggedGamesListView"
+                        Grid.Row="4"
+                        VerticalOptions="FillAndExpand">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame BorderColor="Gray" Padding="10" Margin="0,0,0,10">
@@ -39,14 +44,12 @@
                             <Label Text="{Binding Summary}" LineBreakMode="TailTruncation" />
                             <Label Text="{Binding Publisher, StringFormat='Published by {0}'}" FontAttributes="Italic" />
                             <Label Text="{Binding DateLogged, StringFormat='Logged on: {0}'}" FontAttributes="Italic" />
-                            <controls:Rating Value="{Binding Rating, Mode=TwoWay}"
-                                             ValueChanged="OnRatingChanged"/>
+                            <controls:Rating Value="{Binding Rating, Mode=TwoWay}" ValueChanged="OnRatingChanged"/>
                             <Button x:Name="removeButton" Text="Remove Game" Clicked="RemoveButton_Clicked" />
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>
